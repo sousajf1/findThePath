@@ -11,8 +11,8 @@
 #include <unordered_map>
 #include <vector>
 
-#include "coordinates.hpp"
 #include "clock.hpp"
+#include "coordinates.hpp"
 
 using Matrix = std::vector<std::vector<double>>;
 constexpr auto infinity = std::numeric_limits<double>::max();
@@ -45,7 +45,6 @@ struct Graph {
                 // number of Columns = numberOfNodes
                 std::size_t idx = whereStoppedReadingTheNodes + indexFromMatrixCoordinates(j, k);
                 bool connected = graphInfo[idx];
-
                 jAdjacencies.push_back(connected ? nodes[j].distanceTo(nodes[k]) : 0.0);
             }
             adjacencies.push_back(jAdjacencies);
@@ -81,7 +80,7 @@ struct Graph {
         for (std::size_t i = 0; i < adjacenciesSize - 1; i++) {
             std::size_t const closestUnvisitedNode_ = closestUnvisitedNode(shortestDistanceFromSrc, visited);
             visited[closestUnvisitedNode_] = 1;
-            if (shortestDistanceFromSrc[closestUnvisitedNode_] == infinity) continue;  // none of the unvisited nodes are connected to the visited nodes
+            if (shortestDistanceFromSrc[closestUnvisitedNode_] == infinity) continue;// none of the unvisited nodes are connected to the visited nodes
             for (std::size_t v = 0; v < adjacenciesSize; v++) {
                 if (visited[v]) continue;
                 if (!adjacencies[closestUnvisitedNode_][v]) continue;
@@ -139,7 +138,7 @@ struct Graph {
         double minDistance = infinity;
 
         for (std::size_t v = 0; v < shortestDistanceFromSrc.size(); v++) {
-            if(visited[v]) continue;
+            if (visited[v]) continue;
             if (shortestDistanceFromSrc[v] <= minDistance) {
                 minDistance = shortestDistanceFromSrc[v];
                 closestIndex = v;
