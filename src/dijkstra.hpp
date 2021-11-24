@@ -88,15 +88,13 @@ struct Graph {
             result.pop();
         }
     }
-    static std::vector<int> tokenize(const std::string& str){
+    static std::vector<int> tokenize(const std::string &str) {
         std::vector<int> out;
         std::size_t start = str.find_first_not_of(',');
         std::size_t end = start;
-        while (start != std::string::npos){
+        while (start != std::string::npos) {
             end = str.find(',', start);
-            // Push back the token found into vector
             out.push_back(std::stoi(str.substr(start, end - start)));
-            // Skip all occurences of the delimiter to find new start
             start = str.find_first_not_of(',', end);
         }
         return out;
