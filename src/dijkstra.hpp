@@ -18,7 +18,7 @@ constexpr auto infinity = std::numeric_limits<double>::max();
 
 struct Graph {
     explicit Graph(std::string const &graphInput) {
-        std::vector graphInfo = stringSplit(graphInput);
+        std::vector graphInfo = tokenize(graphInput);
         // on the file provided the first value is the number of nodes
         numberOfNodes = graphInfo[0];
         nodes.reserve(numberOfNodes);
@@ -88,19 +88,17 @@ struct Graph {
             result.pop();
         }
     }
-
-    static std::vector<int> stringSplit(std::string s) {
-        std::vector<int> out{};
-        std::string const delim = ",";
-
-        size_t pos;
-        std::string token;
-        while ((pos = s.find(delim)) != std::string::npos) {
-            token = s.substr(0, pos);
-            s.erase(0, pos + delim.length());
-            out.push_back(std::stoi(token));
+    static std::vector<int> tokenize(const std::string& str){
+        std::vector<int> out;
+        std::size_t start = str.find_first_not_of(',');
+        std::size_t end = start;
+        while (start != std::string::npos){
+            end = str.find(',', start);
+            // Push back the token found into vector
+            out.push_back(std::stoi(str.substr(start, end - start)));
+            // Skip all occurences of the delimiter to find new start
+            start = str.find_first_not_of(',', end);
         }
-        out.push_back(std::stoi(s));
         return out;
     }
 
