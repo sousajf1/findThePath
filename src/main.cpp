@@ -1,10 +1,10 @@
-#include <sstream>
 #include <chrono>
+#include <sstream>
 
 #include "dijkstra.hpp"
 #include "fileHandler.hpp"
 
-int main([[maybe_unused]] int argc, char * argv[]) {
+int main([[maybe_unused]] int argc, char *argv[]) {
 #if defined(__linux__)
     auto start = std::chrono::steady_clock::now();
 #endif

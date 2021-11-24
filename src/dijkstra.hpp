@@ -2,9 +2,9 @@
 #define DIJKSTRA_HPP_DIJKSTRA_H
 
 #include <cmath>
-#include <iostream>
-#include <fstream>
 #include <filesystem>
+#include <fstream>
+#include <iostream>
 #include <set>
 #include <stack>
 #include <string>
@@ -23,7 +23,7 @@ struct Graph {
         numberOfNodes = graphInfo[0];
         nodes.reserve(numberOfNodes);
         // create coordinates (x,y)
-        for (std::size_t i = 1; i < (numberOfNodes) * 2 + 1; i = i + 2) {
+        for (std::size_t i = 1; i < (numberOfNodes) *2 + 1; i = i + 2) {
             nodes.push_back({graphInfo[i], graphInfo[i + 1]});
         }
         adjacencies.reserve(numberOfNodes);
@@ -71,7 +71,7 @@ struct Graph {
         return solution;
     }
 
-     void createSolution(std::vector<int> const& previous) {
+    void createSolution(std::vector<int> const &previous) {
         if (previous[adjacencies.size() - 1] == -1) {
             solution.emplace_back(0);
             return;
@@ -89,7 +89,7 @@ struct Graph {
         }
     }
 
-    static std::vector<int> stringSplit(std::string s){
+    static std::vector<int> stringSplit(std::string s) {
         std::vector<int> out{};
         std::string const delim = ",";
 
@@ -124,4 +124,4 @@ struct Graph {
     int src{0};
     std::vector<int> solution{};
 };
-#endif // DIJKSTRA_HPP_DIJKSTRA_H
+#endif// DIJKSTRA_HPP_DIJKSTRA_H

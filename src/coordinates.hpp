@@ -16,4 +16,4 @@ struct Coordinates {
     }
 };
 
-#endif // DIJKSTRA_HPP_COORDINATES_HPP
+#endif// DIJKSTRA_HPP_COORDINATES_HPP
