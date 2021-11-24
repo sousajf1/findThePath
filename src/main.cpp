@@ -11,7 +11,7 @@ int main([[maybe_unused]] int argc, char *argv[]) {
     std::vector solution = graph.dijkstra();
     fileHandler.writeOutput(solution);
 #if defined(__linux__)
-    globalClock.print();
+    globalClock.print("Total elapsed time: ");
 #endif
     return 0;
 }

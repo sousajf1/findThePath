@@ -4,17 +4,23 @@
 #include <chrono>
 #include <iostream>
 
+template<typename T>
+concept Printable = requires(T t) {
+    std::cout << t << std::endl;
+};
+
 class Clock {
 public:
     Clock() = default;
-    void print() {
+    void print(Printable auto &msg) {
         auto end = std::chrono::steady_clock::now();
         std::chrono::duration<double> elapsed_seconds = end - start;
-        std::cout << "elapsed time: " << elapsed_seconds.count() << "s\n";
+        std::cout << msg << elapsed_seconds.count() << "s\n";
         start = end;
     }
 
 private:
     std::chrono::time_point<std::chrono::steady_clock, std::chrono::nanoseconds> start = std::chrono::steady_clock::now();
 };
+
 #endif// FINDTHEPATH_CLOCK_HPP
