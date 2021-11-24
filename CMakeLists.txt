@@ -3,4 +3,4 @@ project(dijkstra_hpp)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(dijkstra_hpp main.cpp)
+add_executable(dijkstra_hpp src/main.cpp)
