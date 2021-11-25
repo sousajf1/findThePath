@@ -2,9 +2,11 @@
 #define FINDTHEPATH_FILEHANDLER_HPP
 
 #include <fstream>
+#include <functional>
+#include <iterator>
+#include <numeric>
 #include <sstream>
 #include <string>
-#include <utility>
 
 struct File {
     static constexpr char const *inExtension = ".cav";
@@ -23,9 +25,14 @@ struct File {
     void writeOutput(std::vector<int> const &solution) const {
         auto fileToWrite = std::string{fileName_} + std::string{outExtension};
         std::ofstream outFile(fileToWrite);
-        for (auto const &s : solution) {
-            outFile << s << " ";
-        }
+
+        auto solutionAsString = std::accumulate(std::next(solution.begin()), solution.end(),
+                                                std::to_string(solution[0]),
+                                                [](const std::string &a, int b) {
+                                                    return a + " " + std::to_string(b);
+                                                });
+
+        outFile << solutionAsString;
     }
 
     std::string fileName_;
