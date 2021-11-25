@@ -1,5 +1,5 @@
-#ifndef DIJKSTRA_HPP_FILEHANDLER_HPP
-#define DIJKSTRA_HPP_FILEHANDLER_HPP
+#ifndef FINDTHEPATH_FILEHANDLER_HPP
+#define FINDTHEPATH_FILEHANDLER_HPP
 
 #include <fstream>
 #include <sstream>
@@ -31,4 +31,4 @@ struct File {
     std::string fileName_;
 };
 
-#endif// DIJKSTRA_HPP_FILEHANDLER_HPP
+#endif// FINDTHEPATH_FILEHANDLER_HPP

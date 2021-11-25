@@ -1,5 +1,5 @@
-#ifndef DIJKSTRA_HPP_COORDINATES_HPP
-#define DIJKSTRA_HPP_COORDINATES_HPP
+#ifndef FINDTHEPATH_COORDINATES_HPP
+#define FINDTHEPATH_COORDINATES_HPP
 
 struct Coordinates {
     int x{};
@@ -16,4 +16,4 @@ struct Coordinates {
     }
 };
 
-#endif// DIJKSTRA_HPP_COORDINATES_HPP
+#endif// FINDTHEPATH_COORDINATES_HPP

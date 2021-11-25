@@ -1,5 +1,5 @@
-#ifndef DIJKSTRA_HPP_DIJKSTRA_H
-#define DIJKSTRA_HPP_DIJKSTRA_H
+#ifndef FINDTHEPATH_DIJKSTRA_HPP
+#define FINDTHEPATH_DIJKSTRA_HPP
 
 #include <cmath>
 #include <filesystem>
@@ -25,7 +25,6 @@ struct Graph {
         readNodes(graphInfo);
         readAdjancencies(graphInfo);
     }
-
     // 0 1 2
     // 3 4 5
     // 6 7 8
@@ -74,6 +73,7 @@ struct Graph {
         std::vector<int> visited;
         visited.resize(adjacenciesSize, 0);
 
+        //start
         previousNodeInShortestPath[src] = src;
 
         // for all nodes
@@ -110,7 +110,7 @@ struct Graph {
         for (std::size_t i = adjacencies.size() - 1; i != 0; i = previous[i]) {
             result.push(i + 1);
         }
-        // when getting to 0 loop goes away
+        // hack: when getting to 0 loop goes away
         solution.emplace_back(1);
         while (!result.empty()) {
             solution.emplace_back(result.top());
@@ -121,6 +121,7 @@ struct Graph {
     static std::vector<int> tokenize(const std::string &str) {
         Clock tokenizeClock{};
         std::vector<int> out;
+        out.reserve(str.size());
         constexpr char const delim = ',';
         std::size_t start = str.find_first_not_of(delim);
         std::size_t end = start;
@@ -153,4 +154,4 @@ struct Graph {
     int src{0};
     std::vector<int> solution{};
 };
-#endif// DIJKSTRA_HPP_DIJKSTRA_H
+#endif// FINDTHEPATH_DIJKSTRA_HPP
