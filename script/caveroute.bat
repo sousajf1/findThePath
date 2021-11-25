@@ -4,7 +4,7 @@ set STARTTIME=%TIME%
 
 rem - insert here the line that runs your program - make sure you pass through the file name appropriately
 rem examples are:
-rem myprogram.exe %1
+findThePath.exe %1
 rem or
 rem java -jar myprogram.jar %1
 
